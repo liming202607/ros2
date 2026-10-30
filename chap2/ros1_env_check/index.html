@@ -544,7 +544,7 @@ git<span class="w"> </span>update-index<span class="w"> </span>--chmod<span clas
 [WARN] AMENT_PREFIX_PATH 非空，说明环境里还残留 ROS 2 的路径
 [FAIL] import rospy 失败：ImportError
 </code></pre></div>
-<p><img alt="在 Foxy 终端里运行自检：准确指出当前是 ROS 2 环境" src="../img/chap2/ros1_env_check/mixed_ros_terminal.png"/></p>
+<p><img alt="在 Foxy 终端里运行自检：准确指出当前是 ROS 2 环境" src="../../img/chap2/ros1_env_check/mixed_ros_terminal.png"/></p>
 <p><em>图 1　两种 ROS 都装了、但当前终端 source 的是 Foxy 时的输出。脚本没有笼统地报"ROS 不可用"，
 而是明确指出「本机同时装了 noetic 与 foxy」「当前终端是 ROS 2 环境」，
 并给出切回 ROS 1 的具体命令。这正是 <code>ROS_DISTRO was set to 'noetic' before</code> 这类警告的根源。</em></p>
@@ -557,7 +557,7 @@ git<span class="w"> </span>update-index<span class="w"> </span>--chmod<span clas
 
 结果：15 项通过，2 项警告，0 项失败
 </code></pre></div>
-<p><img alt="切到 ROS 1 干净终端后：15 项通过、0 项失败" src="../img/chap2/ros1_env_check/clean_ros1_terminal.png"/></p>
+<p><img alt="切到 ROS 1 干净终端后：15 项通过、0 项失败" src="../../img/chap2/ros1_env_check/clean_ros1_terminal.png"/></p>
 <p><em>图 2　新开终端并 <code>source /opt/ros/noetic/setup.bash</code> 后重跑，</em><em>0 项失败</em><em>：
 <code>rospy</code> 可导入、<code>rosversion</code> 正常、BOM / CRLF / 可执行位三项文件卫生检查全部通过。
 剩下两条 WARN 都不是缺陷：一条是"本机同时装了 ROS 1 与 ROS 2"（环境事实，
