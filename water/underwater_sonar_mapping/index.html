@@ -49,7 +49,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../chapter/chap1/chap1/">1. 认识 ROS</a>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../chapter/chap2/">2. ROS 基础 - ROS 基础</a>
+<li class="toctree-l1"><a class="reference internal">2. ROS 基础 - ROS 基础</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter/chap2/">章节首页</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../chap2/ros1_message_time_sync/">ROS Noetic 多传感器话题时间同步</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../chap2/ros1_parameter_sine_wave/">ROS Noetic 运行参数热更新（正弦信号）</a>
+</li>
+</ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../chapter/chap3/">3. 机器人系统设计</a>
 </li>
@@ -64,8 +72,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../chapter/chap8/">8. ROS 机器人综合应用</a>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../chapter/chap9/">9. ROS 2</a>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../chap2/ros1_parameter_sine_wave/">ROS Noetic 运行参数热更新（正弦信号）</a>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">人形机器人</span></p>
@@ -363,7 +369,8 @@
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ros2_ws/src
 <span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src
 </code></pre></div></li>
-<li>从 ros2 仓库拷贝模块代码到工作空间：
+<li>从 ros2 仓库拷贝模块代码到工作空间：                 <br/>
+("cp -r ~/OpenHUTB/ros2/src/....._mapping ~/ros2_ws/src/"中OPenHUTB是文件夹名，一般克隆ros2不会自带OPenHUTB文件夹，输入改指令时可以去掉"/OpenHUTB"部分)
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>-r<span class="w"> </span>~/OpenHUTB/ros2/src/underwater_sonar_mapping<span class="w"> </span>~/ros2_ws/src/
 <span class="nb">cd</span><span class="w"> </span>~/ros2_ws
 </code></pre></div></li>
@@ -375,7 +382,7 @@
 <div class="highlight"><pre><span></span><code>ros2<span class="w"> </span>launch<span class="w"> </span>underwater_sonar_mapping<span class="w"> </span>main.launch.py
 </code></pre></div>
 5.运行效果（截图）
-<img alt="运行效果" src="../../img/capture_4.png"/></li>
+<img alt="运行效果" src="../../img/underwater_sonar_3d_mapping_run.png"/></li>
 </ol>
 <p>效果说明：节点成功启动，基于模拟声呐数据生成了三维海底地形，并清晰标注了水下沉船/暗礁等障碍物位置，验证了声呐三维测绘与避障感知算法的可行性。</p></div>
 </div>
