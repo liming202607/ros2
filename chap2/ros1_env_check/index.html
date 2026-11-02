@@ -414,6 +414,9 @@
 <span class="c1"># 额外扫描某个目录的文件卫生（BOM / CRLF / 可执行位）</span>
 python3<span class="w"> </span>check_env.py<span class="w"> </span>--scan<span class="w"> </span>.
 
+<span class="c1"># 只按文件检查计退出码（没装 ROS 的 CI job 用它做文档 lint）</span>
+python3<span class="w"> </span>check_env.py<span class="w"> </span>--scan<span class="w"> </span>docs/<span class="w"> </span>--scan-only
+
 <span class="c1"># 只把问题打出来</span>
 python3<span class="w"> </span>check_env.py<span class="w"> </span>--quiet
 
@@ -439,7 +442,15 @@ python3<span class="w"> </span>check_env.py<span class="w"> </span>--strict
 [ OK ] 存在 src/
 [ OK ] devel 的 Python 包路径已生效（source devel/setup.bash 已执行）
 </code></pre></div>
-<p>退出码：<code>0</code> 表示通过，<code>1</code> 表示有 FAIL（加 <code>--strict</code> 时 WARN 也算失败）。</p>
+<p>退出码：<code>0</code> 表示通过，<code>1</code> 表示有 FAIL（加 <code>--strict</code> 时 WARN 也算失败），
+<code>2</code> 表示参数用法错误。</p>
+<div class="admonition tip">
+<p class="admonition-title"><code>--scan-only</code>：把文件检查与环境检查的退出码分开</p>
+<p>不带 <code>--scan-only</code> 时，退出码把<strong>环境检查</strong>也算进去。所以在<strong>没装 ROS 的 CI job</strong> 里
+跑 <code>check_env.py --scan docs/</code> 会一直红——失败项是 <code>ROS_DISTRO 未设置</code>、<code>import rospy 失败</code>，
+与文件完全无关。加上 <code>--scan-only</code> 就只跑文件卫生、只按它计退出码：
+干净目录即使没 source ROS 也返回 <code>0</code>，而一旦真有 BOM / CRLF 仍然返回 <code>1</code>。</p>
+</div>
 <h2 id="3-ros-1-ros-2">3. ROS 1 与 ROS 2 共存时最容易踩的坑</h2>
 <p>Ubuntu 20.04 上常见 <strong>Noetic + Foxy</strong> 双版本共存。这时 <code>source</code> 错一个就会出问题：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ❌ 错误：同一个终端里先 source 了 ROS 2</span>
